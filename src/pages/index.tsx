@@ -1,25 +1,47 @@
-// use client
-import type { GetStaticProps } from 'next';
+// Home.tsx
+import React, { useState, useEffect } from 'react';
+import '../styles.css'
+import 'tailwindcss/base.css';
+import 'tailwindcss/components.css';
+import 'tailwindcss/utilities.css';
+import Menu from '@/components/Menu';
 import Cards from '@/components/Cards';
-import { fetchAllPokemon } from '../services/pokeApi'; // Importa la función del servicio
+import { fetchAllPokemon, PokemonListItem } from '../services/pokeApi'; 
 
-export default function Home({ pokemonList }: { pokemonList: any[] }) {
+export default function Home() {
+  const [pokemonList, setPokemonList] = useState<PokemonListItem[]>([]);
+
+  useEffect(() => {
+    async function fetchInitialPokemon() {
+      try {
+        const initialPokemon = await fetchAllPokemon();
+        setPokemonList(initialPokemon);
+      } catch (error) {
+        console.error('Error fetching initial Pokémon:', error);
+      }
+    }
+
+    fetchInitialPokemon();
+  }, []);
+
+  const loadMorePokemon = async () => {
+    try {
+      const additionalPokemon = await fetchAllPokemon(pokemonList.length, 12);
+      setPokemonList((prevList) => [...prevList, ...additionalPokemon]);
+    } catch (error) {
+      console.error('Error fetching more Pokémon:', error);
+    }
+  };
+
   return (
     <div>
-      <h1>Pokedex</h1>
+      <Menu/>
       <section>
-        <Cards pokemonList={pokemonList} /> {/* Actualiza la estructura */}
+        <Cards 
+          initialPokemonList={pokemonList} 
+          onLoadMore={loadMorePokemon}
+        />
       </section>
     </div>
   );
 }
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const pokemonList = await fetchAllPokemon();
-
-  return {
-    props: {
-      pokemonList,
-    },
-  };
-};

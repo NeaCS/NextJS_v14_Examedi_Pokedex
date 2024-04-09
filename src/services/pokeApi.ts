@@ -1,3 +1,4 @@
+// pokeApi.ts
 export interface PokemonListItem {
   id: number;
   name: string;
@@ -5,9 +6,9 @@ export interface PokemonListItem {
   image: string;
 }
 
-export async function fetchAllPokemon(): Promise<PokemonListItem[]> {
+export async function fetchAllPokemon(offset: number = 0, limit: number = 12): Promise<PokemonListItem[]> {
   try {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=150'); // Limitando la cantidad de Pokémon a 150 para simplificar
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`);
     const data = await response.json();
     const pokemonList: PokemonListItem[] = await Promise.all(
       data.results.map(async (pokemon: any) => {
