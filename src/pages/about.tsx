@@ -2,9 +2,7 @@ import React from 'react';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer';
 
-import 'tailwindcss/base.css';
-import 'tailwindcss/components.css';
-import 'tailwindcss/utilities.css';
+
 import '../styles.css'; 
 
 const AboutPage = () => {
