@@ -1,9 +1,7 @@
 // Home.tsx
 import React, { useState, useEffect } from 'react';
 import '../styles.css'
-import 'tailwindcss/base.css';
-import 'tailwindcss/components.css';
-import 'tailwindcss/utilities.css';
+
 import Menu from '../components/Menu';
 import Cards from '../components/Cards';
 import Footer from '../components/Footer';
