@@ -4,9 +4,9 @@ import '../styles.css'
 import 'tailwindcss/base.css';
 import 'tailwindcss/components.css';
 import 'tailwindcss/utilities.css';
-import Menu from '@/components/Menu';
-import Cards from '@/components/Cards';
-import Footer from '@/components/Footer';
+import Menu from '../components/Menu';
+import Cards from '../components/Cards';
+import Footer from '../components/Footer';
 
 import { fetchAllPokemon, PokemonListItem } from '../services/pokeApi'; 
 

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchPokemonDetails } from '../services/pokeApi';
 import type { PokemonDetails } from '../services/pokeApi';
-import 'tailwindcss/base.css';
-import 'tailwindcss/components.css';
-import 'tailwindcss/utilities.css';
+
 import Link from 'next/link';
 
 
