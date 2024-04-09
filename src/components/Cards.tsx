@@ -11,7 +11,28 @@ interface Props {
   onLoadMore: () => void;
 }
 
+
 const Cards: React.FC<Props> = ({ initialPokemonList, onLoadMore }) => {
+  const typeColors: { [key: string]: string } = {
+    normal: 'bg-gray-400',
+    fire: 'bg-red-500',
+    water: 'bg-blue-500',
+    electric: 'bg-yellow-400',
+    grass: 'bg-green-500',
+    ice: 'bg-blue-200',
+    fighting: 'bg-red-700',
+    poison: 'bg-purple-500',
+    ground: 'bg-yellow-800',
+    flying: 'bg-indigo-400',
+    psychic: 'bg-purple-400',
+    bug: 'bg-green-600',
+    rock: 'bg-yellow-600',
+    ghost: 'bg-indigo-700',
+    dragon: 'bg-blue-600',
+    dark: 'bg-gray-800',
+    steel: 'bg-gray-500',
+    fairy: 'bg-pink-400',
+  };
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -32,8 +53,17 @@ const Cards: React.FC<Props> = ({ initialPokemonList, onLoadMore }) => {
                   <h3 className="text-sm text-gray-700">
                     {pokemon.name}
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">ID: {pokemon.id}</p>
-                  <p className="mt-1 text-sm text-gray-500">Tipo: {pokemon.types.join(', ')}</p>
+                  <p className="mt-1 text-sm text-gray-500">N°: {pokemon.id}</p>
+                  <div className="flex">
+                    {pokemon.types.map((type) => (
+                      <span
+                        key={type}
+                        className={`mt-1 mr-1 px-2 py-1 text-xs font-medium text-white rounded ${typeColors[type]}`}
+                      >
+                        {type}
+                      </span>
+                    ))}
+                  </div>         
                 </div>
               </div>
             </div>

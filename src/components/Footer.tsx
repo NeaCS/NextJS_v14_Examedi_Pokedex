@@ -17,7 +17,7 @@ const certifications: Certification[] = [
 
 const Footer: React.FC = () => {
     return (
-      <footer className="bg-gray-800 text-white py-8">
+      <footer className="bg-gray-800 text-white py-10 mx-auto flex max-w-9xl items-center justify-between p-6 lg:px-8" >
         <div className="container mx-auto">
           <div className="flex justify-center items-center">
             <div className="text-center certifications">
