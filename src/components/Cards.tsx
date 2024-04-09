@@ -5,6 +5,7 @@ import 'tailwindcss/components.css';
 import 'tailwindcss/utilities.css';
 import LoadMoreButton from './LoadMoreButton';
 import { PokemonListItem } from '../services/pokeApi';
+import router from 'next/router';
 
 interface Props {
   initialPokemonList: PokemonListItem[];
@@ -33,6 +34,9 @@ const Cards: React.FC<Props> = ({ initialPokemonList, onLoadMore }) => {
     steel: 'bg-gray-500',
     fairy: 'bg-pink-400',
   };
+  const handleCardClick = (pokemonId: number) => {
+    router.push(`/pokemon/${pokemonId}`);
+  };
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -40,7 +44,9 @@ const Cards: React.FC<Props> = ({ initialPokemonList, onLoadMore }) => {
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {initialPokemonList.map((pokemon) => (
-            <div key={pokemon.name} className="group relative">
+            <div key={pokemon.name} className="group relative cursor-pointer hover:opacity-75" // Apply hover effect and cursor pointer
+            onClick={() => handleCardClick(pokemon.id)}>
+          
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                 <img
                   src={pokemon.image}
