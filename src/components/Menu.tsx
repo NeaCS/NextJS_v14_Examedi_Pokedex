@@ -14,7 +14,7 @@ const Menu = () => {
             <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
           </a>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="flex lg:gap-x-12">
           <div className="menu-item">
             <Link href="/" className="menu-link text-sm font-medium text-gray-700 hover:text-blue-500">
               Pokédex
