@@ -37,49 +37,48 @@ const PokemonDetails: React.FC<Props> = ({ pokemonId }) => {
     return (
         <div className="bg-white rounded-lg shadow-md p-6 flex flex-col gap-4">
           <div className="flex justify-between items-center">
-          <Link href="/" className="menu-link text-sm font-medium text-gray-700 hover:text-blue-500">
+          <Link href="/" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               volver
             </Link>
             <h2 className="text-2xl font-bold">{pokemonDetails.name}</h2>
-            <p className="text-gray-600">ID: {pokemonDetails.id}</p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {pokemonDetails.types.map((type, index) => (
-              <span
-                key={index}
-                className={`px-2 py-1 rounded-full text-white text-xs font-medium bg-${type}`}
-              >
-                {type}
-              </span>
-            ))}
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="text-gray-600 font-bold">Abilities:</p>
-            <ul className="list-disc pl-4">
-              {pokemonDetails.abilities.map((ability, index) => (
-                <li key={index} className="text-gray-700">
-                  {ability}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="text-gray-600 font-bold">Stats:</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <p className="text-gray-700">Height: {pokemonDetails.height}m</p>
-              <p className="text-gray-700">Weight: {pokemonDetails.weight}kg</p>
-              <p className="text-gray-700">Category: {pokemonDetails.category}</p>
-              {/* Add weaknesses and evolutions if available */}
-              {pokemonDetails.weaknesses.length > 0 && (
-                <p className="text-gray-700">Weaknesses: {pokemonDetails.weaknesses.join(', ')}</p>
-              )}
-              {pokemonDetails.evolutions.length > 0 && (
-                <p className="text-gray-700">Evolutions: {pokemonDetails.evolutions.join(', ')}</p>
-              )}
-            </div>
-          </div>
-          <img src={pokemonDetails.image} alt={pokemonDetails.name} className="w-full h-auto object-cover rounded-lg" />
+        <p className="text-gray-600">ID: {pokemonDetails.id}</p>
+      </div>
+      <img src={pokemonDetails.image} alt={pokemonDetails.name} className="w-32 h-auto object-cover rounded-lg mx-auto mb-4" />
+      <div className="flex flex-wrap gap-2 justify-center">
+        {pokemonDetails.types.map((type, index) => (
+          <span
+            key={index}
+            className={`px-2 py-1 rounded-full text-white text-xs font-medium bg-${type}`}
+          >
+            {type}
+          </span>
+        ))}
+      </div>
+      <div className="flex flex-col gap-2 lex justify-between items-center">
+        <p className="text-gray-600 font-bold">Habilidades:</p>
+        <ul className="list-disc pl-4">
+          {pokemonDetails.abilities.map((ability, index) => (
+            <li key={index} className="text-gray-700">
+              {ability}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="flex flex-col gap-2 items-center">
+        <p className="text-gray-600 font-bold">Estadísticas:</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <p className="text-gray-700">Altura: {pokemonDetails.height}m</p>
+          <p className="text-gray-700">Peso: {pokemonDetails.weight}kg</p>
+          <p className="text-gray-700">Categoría: {pokemonDetails.category}</p>
+          {pokemonDetails.weaknesses.length > 0 && (
+            <p className="text-gray-700">Debilidades: {pokemonDetails.weaknesses.join(', ')}</p>
+          )}
+          {pokemonDetails.evolutions.length > 0 && (
+            <p className="text-gray-700">Evoluciones: {pokemonDetails.evolutions.join(', ')}</p>
+          )}
         </div>
-      );
-    };
+      </div>
+    </div>
+  );
+};
 export default PokemonDetails;
