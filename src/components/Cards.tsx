@@ -1,8 +1,6 @@
 import React from 'react';
 
-import 'tailwindcss/base.css';
-import 'tailwindcss/components.css';
-import 'tailwindcss/utilities.css';
+
 import LoadMoreButton from './LoadMoreButton';
 import { PokemonListItem } from '../services/pokeApi';
 import router from 'next/router';

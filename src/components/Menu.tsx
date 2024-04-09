@@ -1,8 +1,6 @@
 import React from 'react';
 
-import 'tailwindcss/base.css';
-import 'tailwindcss/components.css';
-import 'tailwindcss/utilities.css';
+
 import '../styles.css'; 
 
 import Link from 'next/link';
